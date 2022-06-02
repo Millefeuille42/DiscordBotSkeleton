@@ -1,4 +1,17 @@
-package github.com/Millefeuille42/DiscordBotSkeleton
+package github
+
+import (
+	"fmt"
+	"github.com/Millefeuille42/DiscordBotSkeleton/commands"
+	"github.com/Millefeuille42/DiscordBotSkeleton/commands/guild"
+	"github.com/Millefeuille42/DiscordBotSkeleton/utils"
+	"github.com/bwmarrin/discordgo"
+	"log"
+	"os"
+	"time"
+)
+
+.com/Millefeuille42/DiscordBotSkeleton
 
 import (
 	"fmt"
@@ -20,6 +33,7 @@ type BotSkeleton struct {
 	Session         *discordgo.Session
 	Prefix          string
 	OwnerId         string
+	Handler			func(*discordgo.Session, *discordgo.MessageCreate)
 }
 
 // prepFileSystem Create required directories
@@ -75,6 +89,7 @@ func New() BotSkeleton {
 		Session:         nil,
 		Prefix:          os.Getenv("BOT_PREFIX"),
 		OwnerId:         os.Getenv("BOT_OWNER"),
+		Handler:		 MessageHandler,
 	}
 	return mainBot
 }

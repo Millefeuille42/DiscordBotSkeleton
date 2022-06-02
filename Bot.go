@@ -69,6 +69,10 @@ func (bt *BotSkeleton) StartBot() {
 }
 
 func New() BotSkeleton {
+	if os.Getenv("BOT_PREFIX") == "" || os.Getenv("BOT_OWNER") == "" || os.Getenv("BOT_TOKEN") == "" {
+		return BotSkeleton{}
+	}
+
 	mainBot = BotSkeleton{
 		FSPrep:          prepFileSystem,
 		CommandMapSetup: setupFunctionsMap,

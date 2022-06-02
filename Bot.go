@@ -1,17 +1,4 @@
-package github
-
-import (
-	"fmt"
-	"github.com/Millefeuille42/DiscordBotSkeleton/commands"
-	"github.com/Millefeuille42/DiscordBotSkeleton/commands/guild"
-	"github.com/Millefeuille42/DiscordBotSkeleton/utils"
-	"github.com/bwmarrin/discordgo"
-	"log"
-	"os"
-	"time"
-)
-
-.com/Millefeuille42/DiscordBotSkeleton
+package DiscordSkeleton
 
 import (
 	"fmt"
@@ -33,7 +20,7 @@ type BotSkeleton struct {
 	Session         *discordgo.Session
 	Prefix          string
 	OwnerId         string
-	Handler			func(*discordgo.Session, *discordgo.MessageCreate)
+	Handler         func(*discordgo.Session, *discordgo.MessageCreate)
 }
 
 // prepFileSystem Create required directories
@@ -61,7 +48,7 @@ func (bt *BotSkeleton) StartBot() {
 
 	bt.Session, err = discordgo.New("Bot " + os.Getenv("BOT_TOKEN"))
 	utils.CheckError(err)
-	bt.Session.AddHandler(messageHandler)
+	bt.Session.AddHandler(MessageHandler)
 	err = bt.Session.Open()
 	utils.CheckError(err)
 	fmt.Println("Discord bot created")
@@ -89,7 +76,7 @@ func New() BotSkeleton {
 		Session:         nil,
 		Prefix:          os.Getenv("BOT_PREFIX"),
 		OwnerId:         os.Getenv("BOT_OWNER"),
-		Handler:		 MessageHandler,
+		Handler:         MessageHandler,
 	}
 	return mainBot
 }

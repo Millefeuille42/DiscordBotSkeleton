@@ -1,13 +1,4 @@
-package github
-
-import (
-	"github.com/Millefeuille42/DiscordBotSkeleton/sessionAgent"
-	"github.com/Millefeuille42/DiscordBotSkeleton/utils"
-	"github.com/bwmarrin/discordgo"
-	"strings"
-)
-
-.com/Millefeuille42/DiscordBotSkeleton
+package DiscordSkeleton
 
 import (
 	"github.com/Millefeuille42/DiscordBotSkeleton/sessionAgent"
@@ -31,7 +22,7 @@ func commandRouter(agent sessionAgent.DiscordAgent) {
 	}
 }
 
-// messageHandler Discord bot message handler
+// MessageHandler Discord bot message handler
 func MessageHandler(session *discordgo.Session, message *discordgo.MessageCreate) {
 	botID, _ := session.User("@me")
 	agent := sessionAgent.DiscordAgent{

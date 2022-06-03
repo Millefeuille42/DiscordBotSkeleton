@@ -9,8 +9,8 @@ import (
 	"os"
 )
 
-// guildLoadFile Returns guild data from file
-func guildLoadFile(agent sessionAgent.DiscordAgent, silent bool, id string) (GuildData, error) {
+// GuildLoadFile Returns guild data from file
+func GuildLoadFile(agent sessionAgent.DiscordAgent, silent bool, id string) (GuildData, error) {
 	data := GuildData{}
 
 	if id == "" {
@@ -50,8 +50,8 @@ func guildWriteFile(agent sessionAgent.DiscordAgent, data GuildData) error {
 	return nil
 }
 
-// guildInitialCheck Required before guild related actions, checks if guild exists
-func guildInitialCheck(agent sessionAgent.DiscordAgent) bool {
+// GuildInitialCheck Required before guild related actions, checks if guild exists
+func GuildInitialCheck(agent sessionAgent.DiscordAgent) bool {
 	_, err := os.Stat(fmt.Sprintf("./data/guilds/%s.json", agent.Message.GuildID))
 	if !os.IsNotExist(err) {
 		return true

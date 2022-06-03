@@ -9,10 +9,10 @@ import (
 
 // AdminSendSettings Send a guild settings, admin rights are not required for this
 func AdminSendSettings(agent sessionAgent.DiscordAgent) {
-	if !guildInitialCheck(agent) {
+	if !GuildInitialCheck(agent) {
 		return
 	}
-	settings, err := guildLoadFile(agent, false, "")
+	settings, err := GuildLoadFile(agent, false, "")
 	if err != nil {
 		return
 	}
@@ -34,14 +34,14 @@ func AdminSendSettings(agent sessionAgent.DiscordAgent) {
 
 // AdminSet Add provided admins to the guild
 func AdminSet(agent sessionAgent.DiscordAgent) {
-	if !guildInitialCheck(agent) {
+	if !GuildInitialCheck(agent) {
 		return
 	}
 	args := agent.Args
 	if len(args) <= 1 {
 		return
 	}
-	data, err := guildLoadFile(agent, false, "")
+	data, err := GuildLoadFile(agent, false, "")
 	if err != nil {
 		return
 	}

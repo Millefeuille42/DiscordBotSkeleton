@@ -7,7 +7,7 @@ import (
 func discordRoleSetLoad(id, role string, agent sessionAgent.DiscordAgent) error {
 	roleId := "none"
 
-	data, err := guildLoadFile(agent, false, "")
+	data, err := GuildLoadFile(agent, false, "")
 	if err != nil {
 		return err
 	}

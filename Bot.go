@@ -48,7 +48,7 @@ func (bt *BotSkeleton) StartBot() {
 
 	bt.Session, err = discordgo.New("Bot " + os.Getenv("BOT_TOKEN"))
 	utils.CheckError(err)
-	bt.Session.AddHandler(MessageHandler)
+	bt.Session.AddHandler(bt.Handler)
 	err = bt.Session.Open()
 	utils.CheckError(err)
 	fmt.Println("Discord bot created")

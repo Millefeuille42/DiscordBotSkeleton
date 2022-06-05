@@ -52,11 +52,13 @@ func AdminSet(agent sessionAgent.DiscordAgent) {
 	}
 
 	for _, user := range args[1:] {
-		if !strings.Contains(user, "!") {
+		if !strings.Contains(user, "@") {
 			continue
 		}
 		user = strings.TrimSpace(user)
-		user = user[3 : len(user)-1]
+		user = strings.ReplaceAll(user, "<", "")
+		user = strings.ReplaceAll(user, ">", "")
+		user = strings.Replace(user, "@", "", 1)
 		if !utils.Find(data.Admins, user) {
 			data.Admins = append(data.Admins, user)
 			discordRoleSet(data, user, "admin", agent)
